@@ -1,85 +1,191 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>创建博客</title>
     <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .top {
+            background-color: rgb(0, 153, 51);
+            text-align: left;
+        }
+
+        .top .top_con {
+            width: 80%;
+            text-align: left;
+            margin: 0 auto;
+        }
+
+        .top .top_con h1 {
+            font-size: 40px;
+            color: #fff;
+            font-weight: bold;
+            padding: 18px 0;
+            display: inline-block;
+            width: 49%;
+
+        }
+
+        .top .top_con .left {
+            text-align: left;
+        }
+
+        .top .top_con .right {
+            text-align: right;
+        }
+
+        .content {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .content h2 {
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 400;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .content .biaoti {
+            font-size: 16px;
+            line-height: 23px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            margin-top: 25px;
+            color: #333;
+        }
+
+        .content .tishi {
+            font-size: 12px;
+            line-height: 18px;
+            color: #999;
+            text-align: right
+        }
+
+        .content input {
+            display: block;
+            resize: vertical;
+            padding: 5px 15px;
+            line-height: 1.5;
+            box-sizing: border-box;
+            width: 100%;
+            font-size: inherit;
+            color: #606266;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #dcdfe6;
+            border-radius: 4px;
+        }
+
+        .content .content-wrapper .text {
+            height: 180px;
+            width: 100%;
+        }
+
+        .content #btn-create {
+            display: inline-block;
+            line-height: 1;
+            white-space: nowrap;
+            cursor: pointer;
+            border: 1px solid #dcdfe6;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 12px 20px;
+            font-size: 14px;
+            border-radius: 4px;
+            background-color: rgb(0, 153, 51);
+            margin-top: 51px;
+        }
+
         body {
-            margin: 0 20px;
+            margin: 0 0px;
             line-height: 1;
         }
+
         a {
             text-decoration-line: none;
-        }
-        .title-wrapper {
-            margin-bottom: 10px;
-        }
-        .title-wrapper input {
-            width: 300px;
-        }
-        .content-wrapper textarea {
-            width: 300px;
-            height: 150px;
+            color: #fff;
         }
     </style>
 </head>
+
 <body>
-    <h1 style="border-bottom: 1px solid #ccc; padding-bottom: 10px;">创建博客</h1>
-    <div>
-        <div class="title-wrapper">
-            <input id="text-title">
-        </div>
-        <div class="content-wrapper">
-            <textarea id="text-content"></textarea>
-        </div>
-        <div>
-            <button id="btn-create">创建</button>
+    <div class="top">
+        <div class="top_con">
+            <a href="/index.html">
+                <h1 class="left">LET'S SHARE</h1>
+            </a>
+            <h1 class="right">创作中心</h1>
         </div>
     </div>
+    <diV class="content">
+        <h2>创建博客</h2>
+        <div>
+            <div class="title-wrapper">
+                <p class="biaoti">文章标题</p>
+                <input id="text-title">
+                <p class="tishi">限30字</p>
+            </div>
+            <div class="content-wrapper">
+                <p class="biaoti">文章内容</p>
+                <textarea id="text-content" class="text"></textarea>
+                <div>
+                    <button id="btn-create">立即创建</button>
+                    <p class="tishi">限200字</p>
+                </div>
+            </div>
+        </diV>
 
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
-    <script>
-        // 发送 post 请求
-        function post(url, data = {}) {
-            return $.ajax({
-                type: 'post',
-                url,
-                data: JSON.stringify(data),
-                contentType: "application/json",
-            })
-        }
-
-        // 获取 dom 元素
-        $textTitle = $('#text-title')
-        $textContent = $('#text-content')
-        $btnCreate = $('#btn-create')
-
-        // 提交数据
-        $btnCreate.click(() => {
-            const title = $textTitle.val().trim()
-            const content = $textContent.val().trim()
-            if (title === '' || content === '') {
-                alert('标题或内容不能为空')
-                return
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+        <script>
+            // 发送 post 请求
+            function post(url, data = {}) {
+                return $.ajax({
+                    type: 'post',
+                    url,
+                    data: JSON.stringify(data),
+                    contentType: "application/json",
+                })
             }
 
-            const url = '/api/blog/new'
-            const data = {
-                title,
-                content
-            }
-            post(url, data).then(res => {
-                if (res.errno !== 0) {
-                    alert('操作错误')
+            // 获取 dom 元素
+            $textTitle = $('#text-title')
+            $textContent = $('#text-content')
+            $btnCreate = $('#btn-create')
+
+            // 提交数据
+            $btnCreate.click(() => {
+                const title = $textTitle.val().trim()
+                const content = $textContent.val().trim()
+                if (title === '' || content === '') {
+                    alert('标题或内容不能为空')
                     return
                 }
-                alert('创建成功')
-                location.href = '/admin.html'
-            })
-        })
 
-    </script>
+                const url = '/api/blog/new'
+                const data = {
+                    title,
+                    content
+                }
+                post(url, data).then(res => {
+                    if (res.errno !== 0) {
+                        alert('操作错误')
+                        return
+                    }
+                    alert('创建成功')
+                    location.href = '/admin.html'
+                })
+            })
+        </script>
 </body>
+
 </html>

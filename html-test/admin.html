@@ -1,46 +1,105 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>管理中心</title>
     <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            color: #666;
+        }
+
+        .top a {
+            text-decoration-line: none;
+            color: #fff;
+        }
+
+        .top {
+            background-color: rgb(0, 153, 51);
+            text-align: left;
+        }
+
+        .top .top_con {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .top .top_con h1 {
+            font-size: 40px;
+            color: #fff;
+            font-weight: bold;
+            padding: 18px 0;
+            display: inline-block;
+            width: 49%;
+
+        }
+
+        .top .top_con .left {
+            text-align: left;
+        }
+
+        .top .top_con .right {
+            text-align: right;
+        }
+
+        .content {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
         body {
-            margin: 0 20px;
             line-height: 1;
         }
+
         a {
             text-decoration-line: none;
             cursor: pointer;
         }
+
         table {
             border: 1px solid #ccc;
         }
+
         table th {
             text-align: left;
             background-color: #f1f1f1;
-        } 
+        }
+
         table td:nth-child(1) {
             width: 300px;
         }
     </style>
 </head>
+
 <body>
-    <h1 style="border-bottom: 1px solid #ccc; padding-bottom: 10px;">管理中心</h1>
-    <p>
-        <a href="/new.html">新建博客</a>
-    </p>
-    <div style="margin-bottom: 10px;">
-        <input id="text-keyword">
-        <button id="btn-search">搜索</button>
+    <div class="top">
+        <div class="top_con">
+            <a href="/index.html">
+                <h1 class="left">LET'S SHARE</h1>
+            </a>
+            <h1 class="right">管理中心</h1>
+        </div>
     </div>
-    <table id="table-container">
-        <tr>
-            <th>博客标题</th>
-            <th colspan="2">操作</th>
-        </tr>
-    </table>
+    <div class="content">
+        <p>
+            <a href="/new.html">新建博客</a>
+        </p>
+        <div style="margin-bottom: 10px;">
+            <input id="text-keyword">
+            <button id="btn-search">搜索</button>
+        </div>
+        <table id="table-container">
+            <tr>
+                <th>博客标题</th>
+                <th colspan="2">操作</th>
+            </tr>
+        </table>
+    </div>
 
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script>
@@ -79,7 +138,7 @@
         const $tableContainer = $('#table-container')
 
         // 拼接接口 url
-        let url = '/api/blog/list?isadmin=1'  // 增加一个 isadmin=1 参数，使用登录者的用户名，后端也需要修改 ！！！
+        let url = '/api/blog/list?isadmin=1' // 增加一个 isadmin=1 参数，使用登录者的用户名，后端也需要修改 ！！！
         const urlParams = getUrlParams()
         if (urlParams.keyword) {
             url += '&keyword=' + urlParams.keyword
@@ -135,7 +194,7 @@
                 })
             }
         })
-
     </script>
 </body>
+
 </html>

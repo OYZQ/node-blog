@@ -16,7 +16,7 @@ if (env === 'dev') {
     // redis
     REDIS_CONF = {
         port: 6379,
-        host: '123.0.0.1' 
+        host: '127.0.0.1' 
     }
 }
 
@@ -33,7 +33,7 @@ if (env === 'production') {
     // redis
     REDIS_CONF = {
         port: 6379,
-        host: '123.0.0.1' 
+        host: '127.0.0.1' 
     }
 }
 

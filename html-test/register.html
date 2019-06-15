@@ -5,18 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>登录</title>
+    <title>注册</title>
     <style>
         * {
             margin: 0;
             padding: 0;
         }
 
-        a {
+        a{
             color: #fff;
             text-decoration: none;
         }
-
         .top {
             background-color: rgb(0, 153, 51);
             color: #fff;
@@ -122,12 +121,12 @@
         </a>
         <p>精品博客汇聚</p>
         <div class="bt">
-            <a href="/login.html">
-                <button>立即登录</button>
-            </a>
-            <a href="/register.html">
-                <button>立即注册</button>
-            </a>
+                <a href="/login.html">
+                    <button>立即登录</button>
+                </a>
+                <a href="/register.html">
+                    <button>立即注册</button>
+                </a>
         </div>
     </div>
     <div class="centent">
@@ -139,10 +138,10 @@
             <p>密码</p>
             <input type="password" id="textPassword" placeholder="密码" />
         </label>
-        <button id="btnLogin">立即登录</button>
+        <button id="btnRegister">立即注册</button>
     </div>
     <div class="foot">
-        <span>没有账户？<a href="/register.html">注册新用户</a></span>
+        <span>已有账户？<a href="/login.html">直接登录</a></span>
     </div>
 
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
@@ -157,10 +156,10 @@
             })
         }
 
-        $('#btnLogin').click(() => {
+        $('#btnRegister').click(() => {
             const username = $('#textUsername').val()
             const password = $('#textPassword').val()
-            const url = '/api/user/login'
+            const url = '/api/user/register'
             const data = {
                 username,
                 password
@@ -168,7 +167,8 @@
             post(url, data).then(res => {
                 if (res.errno === 0) {
                     // 登录成功
-                    location.href = './admin.html'
+                    location.href = './login.html'
+                    alert('注册成功！请登录')
                 } else {
                     // 登录失败
                     alert(res.message)

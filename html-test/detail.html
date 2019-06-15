@@ -1,15 +1,60 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>博客详情页</title>
     <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .top {
+            background-color: rgb(0, 153, 51);
+            text-align: left;
+        }
+
+        .top a {
+            text-decoration-line: none;
+            color: #fff;
+        }
+
+        .top .top_con {
+            width: 80%;
+            text-align: left;
+            margin: 0 auto;
+        }
+
+        .top .top_con h1 {
+            font-size: 40px;
+            color: #fff;
+            font-weight: bold;
+            padding: 18px 0;
+            display: inline-block;
+            width: 49%;
+
+        }
+
+        .top .top_con .left {
+            text-align: left;
+        }
+
+        .top .top_con .right {
+            text-align: right;
+        }
+
+        .content {
+            width: 80%;
+            margin: 0 auto;
+        }
+
         body {
-            margin: 0 20px;
             line-height: 1;
         }
+
         a {
             text-decoration-line: none;
         }
@@ -18,22 +63,35 @@
             font-size: 20px;
             font-weight: bold;
         }
+
         .info-container span,
         .info-container a {
             font-size: 14px;
             color: #999;
         }
+
         .content-wrapper {
             margin-top: 20px;
             border-top: 1px solid #ccc;
         }
     </style>
 </head>
+
 <body>
-    <h1 id="title" class="title"></h1>
-    <div id="info-container" class="info-container"></div>
-    <div class="content-wrapper">
-        <p id="content"></p>
+    <div class="top">
+        <div class="top_con">
+            <a href="/index.html">
+                <h1 class="left">LET'S SHARE</h1>
+            </a>
+            <h1 class="right">博文详情</h1>
+        </div>
+    </div>
+    <div class="content">
+        <h1 id="title" class="title"></h1>
+        <div id="info-container" class="info-container"></div>
+        <div class="content-wrapper">
+            <p id="content"></p>
+        </div>
     </div>
 
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
@@ -91,4 +149,5 @@
         })
     </script>
 </body>
+
 </html>
