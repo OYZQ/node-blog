@@ -52,6 +52,47 @@
             padding: 20px 0;
         }
 
+        .content .con_top {
+            width: 100%;
+            padding-bottom: 30px;
+        }
+
+        .content .new {
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 400;
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .content input {
+            resize: vertical;
+            padding: 5px 15px;
+            line-height: 1.5;
+            box-sizing: border-box;
+            font-size: inherit;
+            color: #606266;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #dcdfe6;
+            border-radius: 4px;
+            width: 93%;
+        }
+
+        .content button {
+            display: inline-block;
+            line-height: 1;
+            white-space: nowrap;
+            cursor: pointer;
+            border: 1px solid #dcdfe6;
+            text-align: center;
+            margin: 0;
+            padding: 12px 20px;
+            font-size: 14px;
+            border-radius: 4px;
+            background-color: #ccc
+        }
+
         body {
             line-height: 1;
         }
@@ -61,17 +102,17 @@
             cursor: pointer;
         }
 
-        table {
-            border: 1px solid #ccc;
+        table th,td{
+            padding-bottom: 15px;
         }
-
         table th {
             text-align: left;
-            background-color: #f1f1f1;
         }
-
-        table td:nth-child(1) {
-            width: 300px;
+        table .clo8{
+            width: 94%;
+        }
+        table .col2{
+            text-align: center;
         }
     </style>
 </head>
@@ -86,17 +127,17 @@
         </div>
     </div>
     <div class="content">
-        <p>
+        <p class="new">
             <a href="/new.html">新建博客</a>
         </p>
-        <div style="margin-bottom: 10px;">
+        <div class="con_top">
             <input id="text-keyword">
             <button id="btn-search">搜索</button>
         </div>
         <table id="table-container">
             <tr>
-                <th>博客标题</th>
-                <th colspan="2">操作</th>
+                <th class="clo8">博客标题</th>
+                <th colspan="2" class="col2">操作</th>
             </tr>
         </table>
     </div>
@@ -153,6 +194,7 @@
 
             // 显示数据
             const data = res.data || []
+            console.log(res)
             data.forEach(item => {
                 $tableContainer.append($(`
                     <tr>
